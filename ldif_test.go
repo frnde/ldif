@@ -1,12 +1,13 @@
 package ldif_test
 
 import (
-	"github.com/stretchr/testify/assert"
 	"os"
 	"testing"
 
+	"github.com/stretchr/testify/assert"
+
+	"github.com/frnde/ldif"
 	"github.com/go-ldap/ldap/v3"
-	"github.com/nikkicoon/ldif"
 )
 
 var ldifRFC2849Example = `version: 1

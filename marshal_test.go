@@ -6,8 +6,8 @@ import (
 	"strings"
 	"testing"
 
+	"github.com/frnde/ldif"
 	"github.com/go-ldap/ldap/v3"
-	"github.com/nikkicoon/ldif"
 )
 
 var personLDIF = `dn: uid=someone,ou=people,dc=example,dc=org

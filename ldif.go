@@ -367,10 +367,7 @@ func (l *LDIF) parseLine(line string) (attr, val string, err error) {
 
 func (l *LDIF) parseControls(lines []string) ([]ldap.Control, []string, error) {
 	var controls []ldap.Control
-	for {
-		if !strings.HasPrefix(lines[0], "control:") {
-			break
-		}
+	for strings.HasPrefix(lines[0], "control:") {
 		if !l.Controls {
 			if len(lines) == 1 {
 				return nil, nil, errors.New("only controls found")

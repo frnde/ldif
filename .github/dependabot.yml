@@ -1,0 +1,28 @@
+version: 2
+# Quarantine: 7-day cooldown (gomod, github-actions). Minor/patch grouped, majors separate.
+updates:
+  - package-ecosystem: "gomod"
+    directory: "/"
+    schedule:
+      interval: "daily"
+    cooldown:
+      default-days: 7
+    open-pull-requests-limit: 5
+    groups:
+      go-modules:
+        applies-to: version-updates
+        update-types: ["minor", "patch"]
+        patterns: ["*"]
+
+  - package-ecosystem: "github-actions"
+    directory: "/"
+    schedule:
+      interval: "daily"
+    cooldown:
+      default-days: 7
+    open-pull-requests-limit: 5
+    groups:
+      github-actions:
+        applies-to: version-updates
+        update-types: ["minor", "patch"]
+        patterns: ["*"]

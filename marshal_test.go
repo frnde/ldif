@@ -108,7 +108,7 @@ func nPeople(n int) ([]*ldap.Entry, string) {
 			},
 		}
 
-		builder.WriteString(fmt.Sprintf(""+
+		fmt.Fprintf(&builder, ""+
 			"dn: uid=someone%d,ou=people,dc=example,dc=org\n"+
 			"objectClass: top\n"+
 			"objectClass: person\n"+
@@ -118,7 +118,7 @@ func nPeople(n int) ([]*ldap.Entry, string) {
 			"cn: Someone%d\n"+
 			"mail: someone%d@example.org\n"+
 			"\n",
-			i, i, i, i))
+			i, i, i, i)
 	}
 
 	return nEntries, builder.String()

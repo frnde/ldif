@@ -1,0 +1,12 @@
+title = "ldif secret-scan config"
+
+[extend]
+useDefault = true
+
+[allowlist]
+description = "Generated dirs and test fixtures"
+paths = [
+  '''(^|/)\.git/''',
+  '''(^|/)vendor/''',
+  '''.*_test\.go$''',
+]

@@ -175,9 +175,13 @@ func TestLDIFURL(t *testing.T) {
 	if err != nil {
 		t.Errorf("Failed to create temp file: %s", err)
 	}
-	defer os.Remove(f.Name())
-	f.Write([]byte("TEST\n"))
-	f.Sync()
+	defer func() { _ = os.Remove(f.Name()) }()
+	if _, err := f.Write([]byte("TEST\n")); err != nil {
+		t.Fatalf("Failed to write temp file: %s", err)
+	}
+	if err := f.Sync(); err != nil {
+		t.Fatalf("Failed to sync temp file: %s", err)
+	}
 	l, err := ldif.Parse("dn: uid=someone,dc=example,dc=org\ndescription:< file:///" + f.Name() + "\n")
 	if err != nil {
 		t.Errorf("Failed to parse LDIF: %s", err)
